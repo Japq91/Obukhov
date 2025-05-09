@@ -1,0 +1,15 @@
+# Ignorar archivos temporales
+*.log
+*.tmp
+*.nc
+*.csv
+
+# Ignorar carpetas
+__pycache__/
+out_csv/
+env/
+.venv/
+
+# Ignorar notebooks de cache
+.ipynb_checkpoints/
+
