@@ -2,7 +2,10 @@
 *.log
 *.tmp
 *.nc
-*.csv
+out_csv/*
+!out_csv/.gitkeep
+out_nc/*
+!out_nc/.gitkeep
 
 # Ignorar carpetas
 __pycache__/
