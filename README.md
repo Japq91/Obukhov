@@ -22,7 +22,17 @@ Based on [ERA5: How to calculate Obukhov Length](https://confluence.ecmwf.int/di
 ### **Formula for Obukhov Length (L)**  
 The Obukhov length is calculated as:  
 ```  
-L = - (T₀ * u*³) / (k * g * H)  
+Linv = vk * g * tvst / (tv2 * ust**2)  #ECMWF ERA5 calc.
+``` 
+Where: 
+
+- `vk` = 0.4 (Von Kármán).
+- `g` = 9.81 m/s² (gravedad).
+- `tvst` = -wtv / ust (escala de temperatura turbulenta).
+- `tv2` = temperatura virtual a 2 m.
+- `ust` = velocidad de fricción (u*).
+```  
+L = - (T₀ * u*³) / (k * g * H)  #IFS Doc. Cy49r1
 ```  
 Where:  
 - `T₀` = Surface temperature `[K]`  
