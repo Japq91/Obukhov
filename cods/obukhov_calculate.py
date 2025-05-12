@@ -20,7 +20,7 @@ def qswat(t, p):
         t (np.ndarray): Temperature (K).
         p (np.ndarray): Presión (Pa).
     Returns:
-        np.ndarray: Specific humidity of saturation (kg/kg).
+        np.ndarray: qswt: Saturation specific humidity  (kg/kg).
     """
     rkbol = 1.380658e-23
     rnavo = 6.0221367e+23
@@ -38,8 +38,8 @@ def qswat(t, p):
     foeew = r2es * np.exp((r3les * (t - rtt)) / (t - r4les))
     qs = foeew / p
     zcor = 1 / (1 - retv * qs)
-    qs = qs * zcor
-    return qs
+    qswt = qs * zcor
+    return qswt
 def calculate_obukhov_length(input_nc):
     """
     Calculates the inverse Obukhov length (Linv) and saves the return a dataset.
