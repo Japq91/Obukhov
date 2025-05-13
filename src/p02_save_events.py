@@ -3,7 +3,7 @@
 """
 This script calculates the number of events for stable or unstable conditions according to the Obukhov length (Linv).
 Requires: xarray, numpy, pandas
-Usage: python save_events.py input.nc
+Usage: python p02_save_events.py input.nc
 """
 import sys
 import numpy as np

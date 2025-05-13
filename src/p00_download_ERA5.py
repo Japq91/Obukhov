@@ -3,8 +3,8 @@ import calendar
 import sys
 # === Validación de argumentos ===
 if len(sys.argv) != 3:
-    print("Usage: python era5_download.py <year> <month>")
-    print("Example: python era5_download.py 2023 02")
+    print("Usage: python p00_download_ERA5.py <year> <month>")
+    print("Example: python p00_download_ERA5.py 2023 02")
     sys.exit(1)
 year = sys.argv[1]
 month = sys.argv[2].zfill(2)  # Asegura formato "02" si ingresan solo "2"
@@ -37,7 +37,7 @@ request = {
 }
 #'''
 # === Nombre dinámico del archivo de salida ===
-output_filename = f"datos/era5_{year}_{month}_inst.nc"
+output_filename = f"../data/era5_{year}_{month}_inst.nc"
 print(output_filename)
 print(days)
 # === Envío de la solicitud ===

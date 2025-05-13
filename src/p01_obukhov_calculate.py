@@ -3,7 +3,7 @@
 """
 Script to calculate Obukhov length (Linv) from NetCDF data.
 Requires: xarray, numpy
-Usage: python obukhov_calculate.py input.nc
+Usage: python p01_obukhov_calculate.py input.nc
 """
 import sys
 import numpy as np
@@ -20,7 +20,7 @@ def qswat(t, p):
         t (np.ndarray): Temperature (K).
         p (np.ndarray): Presión (Pa).
     Returns:
-        np.ndarray: Specific humidity of saturation (kg/kg).
+        np.ndarray: qswt: Saturation specific humidity  (kg/kg).
     """
     rkbol = 1.380658e-23
     rnavo = 6.0221367e+23
@@ -38,8 +38,8 @@ def qswat(t, p):
     foeew = r2es * np.exp((r3les * (t - rtt)) / (t - r4les))
     qs = foeew / p
     zcor = 1 / (1 - retv * qs)
-    qs = qs * zcor
-    return qs
+    qswt = qs * zcor
+    return qswt
 def calculate_obukhov_length(input_nc):
     """
     Calculates the inverse Obukhov length (Linv) and saves the return a dataset.
@@ -72,6 +72,7 @@ def calculate_obukhov_length(input_nc):
     Linv = np.clip(Linv, -Linvrange, Linvrange)  # Limitar valores extremos
     print(f"Linv - Max: {Linv.max().values:.3e}, Min: {Linv.min().values:.3e}, Mean: {np.abs(Linv).mean().values:.3e}")
     return Linv,ust
+
 # codigo
 Ld,u_star=calculate_obukhov_length(ifile)
 Ld2=Ld.to_dataset(name='Linv')
@@ -81,10 +82,12 @@ u_star2["u_s"].attrs = {
     "long_name": "Friction velocity",
     "description": "Calculated from Turb. surface stress and Air density",
 }
+
 Ld2["Linv"].attrs = {
     "units": "m^-1",
     "long_name": "Inverse Obukhov length",
     "description": "Calculated from t2m, d2m, sp, ie, ishf, iews, inss",
 }
-xr.merge([Ld2,u_star2]).to_netcdf('out_nc/Lu_%s_%s_.nc'%(year,mon))
-print('done!')
+
+xr.merge([Ld2,u_star2]).to_netcdf('../out_nc/Lu_%s_%s_.nc'%(year,mon))
+#print('done!')
