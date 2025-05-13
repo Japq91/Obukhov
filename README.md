@@ -6,17 +6,17 @@ This repository contains scripts to calculate **Obukhov inverse length (Linv)** 
 ---
 
 ## Contents
-0. [Description](#-description)
-1. [Directory Structure](#-directory-structure)
-2. [Requirements](#-requirements)
+0. [Description](#description)
+1. [Directory Structure](#directory-structure)
+2. [Requirements](#requirements)
 3. [Installation](#installation)
 4. [Usage](#-usage)
 5. [Methodology](#methodology)
-6. [Stability Classification](#-stability-classification)
-7. [Key Parameters](#-key-parameters)
-8. [Study Location](#-study-location)
-9. [Limitations](#-limitations)
-10. [References](#-references)
+6. [Stability Classification](#stability-classification)
+7. [Key Parameters](#key-parameters)
+8. [Study Location](#study-location)
+9. [Limitations](#limitations)
+10. [References](#references)
 
 ## Description
 Obukhov Length Calculation (ERA5-Specific) based on [ERA5: How to calculate Obukhov Length](https://confluence.ecmwf.int/display/CKB/ERA5%3A+How+to+calculate+Obukhov+Length):  
